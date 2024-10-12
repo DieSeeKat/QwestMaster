@@ -9,14 +9,13 @@ export default async function Hint({ params } : { params: { slug: string }}) {
 
     try {
         data = await fetch(`${baseURL}/api/quest/${params.slug}`).then(res => res.json());
-
     } catch (error) {
         console.error('There was a problem with the fetch operation:', error);
     }
 
     const hint = data.hint;
 
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
     return (
         <div
