@@ -10,7 +10,13 @@ const config: Config = {
     extend: {
       colors: {
         background: "var(--background)",
-        foreground: "var(--foreground)",
+        accent: "var(--accent)",
+        text: "var(--text)"
+      },
+      fontFamily: {
+        // Define your custom fonts here
+        robotoslab: ['var(--font-roboto-slab)', 'slab-serif'],
+        montserrat: ['var(--montserrat)', 'sans-serif'],
       },
     },
   },

@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import {Montserrat, Roboto_Slab} from "@next/font/google";
+
+const robotoSlab = Roboto_Slab({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  subsets: ['latin'],
+  variable: "--font-roboto-slab"
+});
+
+const montserrat = Montserrat({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+  display: "swap",
+  subsets: ['latin'],
+  variable: "--font-montserrat"
+});
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -26,7 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased ${robotoSlab.variable} ${montserrat.variable}`}
       >
         {children}
       </body>
