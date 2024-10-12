@@ -1,5 +1,3 @@
-
-
 export default async function Hint({ params } : { params: { slug: string }}) {
 
     let data = {
@@ -16,10 +14,7 @@ export default async function Hint({ params } : { params: { slug: string }}) {
 
     const hint = data.hint;
 
-    console.log(hint);
-
     await new Promise(resolve => setTimeout(resolve, 2000));
-
 
     return (
         <div

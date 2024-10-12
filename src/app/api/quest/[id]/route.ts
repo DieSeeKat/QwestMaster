@@ -1,9 +1,17 @@
 import {NextRequest} from "next/server";
+import {sql} from "@vercel/postgres"
+import NotFound from "next/dist/client/components/not-found-error";
 
 export async function GET(req: NextRequest, { params } : { params: { id: string }}) {
-    console.log(params.id);
+
+    const { rows } = await sql`SELECT * FROM mission WHERE id = ${params.id}`;
+
+    if (!rows.length) {
+        return NotFound;
+    }
+
     return Response.json({
-       hint: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean pulvinar, orci non sodales accumsan, nisi ante consequat arcu, vel venenatis mauris justo ac ex. Aenean ac dolor at augue scelerisque.",
-       image: false,
+       hint: rows[0].hint,
+       image: rows[0].image,
     });
 }
