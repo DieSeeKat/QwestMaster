@@ -1,13 +1,12 @@
-import {NextRequest} from "next/server";
 import {sql} from "@vercel/postgres"
-import NotFound from "next/dist/client/components/not-found-error";
 
-export async function GET(req: NextRequest, { params } : { params: { id: string }}) {
+export async function GET(req: Request, { params } : { params: { id: string }})
+{
 
     const { rows } = await sql`SELECT * FROM mission WHERE id = ${params.id}`;
 
     if (!rows.length) {
-        return NotFound;
+        return new Response("Not Found", { status: 404 });
     }
 
     return Response.json({
